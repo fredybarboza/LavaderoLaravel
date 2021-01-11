@@ -12,7 +12,7 @@ class PedidoController extends Controller
 {
     public function index()
   {
-    $pedidos = Pedido::all();
+    $pedidos = Pedido::where('estado','0')->get();
     
     return response([
      'pedidos'=>PedidoResource::collection($pedidos),

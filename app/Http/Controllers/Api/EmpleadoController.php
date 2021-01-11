@@ -43,10 +43,8 @@ class EmpleadoController extends Controller
     return response(['Employe not found']);  
     }
     return response([
-        'pedidos'=>EmpleadoResource::collection($empleados),
+        'pedidos'=>PedidoResource::collection($empleados),
         'message'=>'Retrieved Succesfully'],
         200);
-
-    
   }
 }
