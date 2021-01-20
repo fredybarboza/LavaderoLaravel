@@ -23,9 +23,9 @@ Route::post('register', [PassportAuthController::class, 'register']);
 Route::post('login', [PassportAuthController::class, 'login']);
 
 
-Route::middleware('auth:api')->group(function () {
+//Route::middleware('auth:api')->group(function () {
     Route::resource('pedidos', PedidoController::class);
     Route::resource('empleados', EmpleadoController::class);
     Route::resource('finalizados', PedidosFinalizadosController::class);
-});
+//});
 

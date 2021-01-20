@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function () {
+   
+    Route::get('/pedidos', 'App\Http\Controllers\PedidoController@index')->name('pedidos.index')
+                                                        ->middleware('permission:pedidos.index');
+    Route::get('/pedidos/{role}', 'App\Http\Controllers\PedidoController@destroy')->name('pedidos.destroy')
+                                                        ->middleware('permission:pedidos.destroy');
+    
 });
