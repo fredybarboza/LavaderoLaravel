@@ -16,11 +16,12 @@ class PassportAuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
-  
+        $identifier = "1";
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'identifier' => $identifier,
         ]);
   
         $token = $user->createToken('Laravel8PassportAuth')->accessToken;

@@ -21,6 +21,12 @@ class PermissionsTableSeeder extends Seeder
          Permission::create(['name' => 'pedidos.edit']);
          Permission::create(['name' => 'pedidos.show']);
          Permission::create(['name' => 'pedidos.destroy']);
+         Permission::create(['name' => 'empleados.index']);
+         Permission::create(['name' => 'empleados.store']);
+         Permission::create(['name' => 'empleados.destroy']);
+         Permission::create(['name' => 'users.index']);
+         Permission::create(['name' => 'role.create']);
+         Permission::create(['name' => 'role.view']);
  
          //Admin
          $admin = Role::create(['name' => 'Admin']);
@@ -29,7 +35,17 @@ class PermissionsTableSeeder extends Seeder
              'pedidos.index',
              'pedidos.edit',
              'pedidos.show',
-             'pedidos.destroy'
+             'pedidos.destroy',
+             //EMPLEADOS
+             'empleados.index',
+             'empleados.store',
+             'empleados.destroy',
+             //USERS
+             'users.index',
+             //ROLES
+             'role.create',
+             'role.view'
+
          ]);
          
           //Empleado
