@@ -21,7 +21,7 @@ class PassportAuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'identifier' => $identifier,
+            
         ]);
   
         $token = $user->createToken('Laravel8PassportAuth')->accessToken;
@@ -38,7 +38,8 @@ class PassportAuthController extends Controller
   
         if (auth()->attempt($data)) {
             $token = auth()->user()->createToken('Laravel8PassportAuth')->accessToken;
-            return response()->json(['token' => $token], 200);
+            $id = auth()->user()->id;
+            return response()->json(['token' => $token, 'id' => $id], 200);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
         }

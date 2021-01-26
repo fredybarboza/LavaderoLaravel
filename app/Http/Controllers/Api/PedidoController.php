@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use App\Models\Vehiculo;
 use App\Http\Resources\PedidoResource;
 use Validator;
 
@@ -22,22 +23,26 @@ class PedidoController extends Controller
   }
     //STORE
    public function store(Request $request){
+    $vehiculo = Vehiculo::find($request->id_vehiculo);
+    $categoria=$vehiculo->id_categoria;
+    $c = $request->id_categoria;
+    if($categoria==$c){
     $input = $request->all();
     $validator = Validator::make($input, [
+    'id_usuario' => 'required',
+    'id_vehiculo' => 'required',
     'id_servicio' => 'required',
     'monto' => 'required',
-    'nombre' => 'required',
-    'ci' => 'required',
-    'descripcion_vehiculo' => 'required',
-    'color_vehiculo' => 'required',
-    'chapa_vehiculo' => 'required',
-    'id_empleado_encargado' => 'required',
     ]);
       if($validator->fails()){
       return response(['error'=>$validator->errors(),'Validation Error']);    
       }
     $pedido = Pedido::create($input);
     return response(['pedidos'=> new PedidoResource($pedido), 'message'=>'Created Succesfully'],200);
+    }
+    else{
+      return response(['message'=>'Error creating order']);
+    }
   }
   //UPDATE
   public function update(Request $request, Pedido $pedido)

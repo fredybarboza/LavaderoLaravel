@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\PassportAuthController;
 use App\Http\Controllers\Api\PedidoController;
 use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\PedidosFinalizadosController;
+use App\Http\Controllers\Api\VehiculoController;
 
 
 /*
@@ -23,9 +24,9 @@ Route::post('register', [PassportAuthController::class, 'register']);
 Route::post('login', [PassportAuthController::class, 'login']);
 
 
-//Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:api')->group(function () {
     Route::resource('pedidos', PedidoController::class);
-    Route::resource('empleados', EmpleadoController::class);
     Route::resource('finalizados', PedidosFinalizadosController::class);
-//});
+    Route::resource('vehiculos', VehiculoController::class);
+});
 

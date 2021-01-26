@@ -16,13 +16,10 @@ class PedidoResource extends JsonResource
     {
         return[
             'id'=> $this->id,
+            'id_usuario'=> $this->id_usuario,
+            'id_vehiculo'=> $this->id_vehiculo,
             'id_servicio' => $this->id_servicio,
             'monto' =>$this->monto,
-            'nombre' =>$this->nombre,
-            'ci'=>$this->ci,
-            'descripcion_vehiculo'=>$this->descripcion_vehiculo,
-            'color_vehiculo'=>$this->color_vehiculo,
-            'chapa_vehiculo'=>$this->chapa_vehiculo,
             'estado'=>$this->estado,
             'id_empleado_encargado' =>$this->id_empleado_encargado,
             'created_at' =>$this->created_at

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePedidosTable extends Migration
+class CreateVehiculosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePedidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
-            $table->id('id')->autoincrement();
+        Schema::create('vehiculos', function (Blueprint $table) {
+            $table->id();
             $table->string('id_usuario');
-            $table->string('id_vehiculo');
-            $table->string('id_servicio');
-            $table->string('monto');
-            $table->string('estado')->default('0');
-            $table->string('id_empleado_encargado')->nullable();
+            $table->string('id_categoria');
+            $table->string('marca');
+            $table->string('modelo');
+            $table->string('matricula');
+            $table->string('color');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreatePedidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('vehiculos');
     }
 }
