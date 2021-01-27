@@ -31,11 +31,19 @@ Route::middleware(['auth'])->group(function () {
                                                         //->middleware('permission:pedidos.destroy');
     Route::get('/empleados', 'App\Http\Controllers\EmpleadoController@index')->name('empleados.index')
                                                         ->middleware('permission:empleados.index');
+    Route::get('/nuevo-empleado', 'App\Http\Controllers\EmpleadoController@createView')->name('empleados.store')
+                                                        ->middleware('permission:empleados.store');
+    Route::post('/nuevo-empleado', 'App\Http\Controllers\EmpleadoController@createEmployee')->name('empleados.store')
+                                                        ->middleware('permission:empleados.store');
      Route::get('/usuarios', 'App\Http\Controllers\UserController@index')->name('users.index')
                                                         ->middleware('permission:users.index');
     Route::get('/role/{id}', 'App\Http\Controllers\RoleController@view')->name('role.view')
                                                         ->middleware('permission:role.view');
     Route::post('/role', 'App\Http\Controllers\RoleController@create')->name('role.create')
                                                         ->middleware('permission:role.create');
+    Route::get('/asignar/{pedidoId}', 'App\Http\Controllers\PedidoController@assignView')->name('pedidos.asignar')
+                                                        ->middleware('permission:pedidos.asignar');
+    Route::post('/asignar', 'App\Http\Controllers\PedidoController@assignEmployee')->name('pedidos.asignar')
+                                                        ->middleware('permission:pedidos.asignar');
     
 });

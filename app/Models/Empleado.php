@@ -13,6 +13,8 @@ class Empleado extends Model
         'nombre',
         'apellido',
         'ci',
+        'direccion',
+        'celular',
         'created_at',
         'updated_at'
     ];

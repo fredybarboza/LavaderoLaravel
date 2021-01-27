@@ -4,6 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        <a href="/empleados" >Lista De Empleados</a> |
+        <a href="/nuevo-empleado" >Agregar Empleado</a> |
+        <a href="/usuarios">Usuarios</a>
+        <hr>
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -24,21 +28,21 @@
             <thead>
             <tr>
       <th scope="col">ID</th>
+      <th scope="col">ID USUARIO</th>
       <th scope="col">SERVICIO</th>
       <th scope="col">MONTO</th>
-      <th scope="col">NOMBRE</th>
-      <th scope="col">-</th>
+      <th scope="col">ID EMPLEADO</th>
     </tr>
   </thead>
   <tbody>
   @foreach($pedidos as $p)
     <tr>
       <td>{{ $p->id }}</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{ $p->id_usuario}}</td>
+      <td>{{ $p->id_servicio}}</td>
+      <td>{{ $p->monto}}</td>
       <td>
-      <a href="/pedidos">ASIGNAR EMPLEADO</a>
+      <a href="/asignar/{{$p->id}}">ASIGNAR EMPLEADO</a>
       </td>
     </tr>
     @endforeach

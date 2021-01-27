@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::get()->all();
+        $pedidos = Pedido::where('estado','0')->get();
         return view('home',compact('pedidos'));
     }
 }
