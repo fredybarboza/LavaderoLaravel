@@ -59,6 +59,12 @@ class PermissionsTableSeeder extends Seeder
               'pedidos.edit',
               'pedidos.asignar',
           ]);
+
+          //Visitor
+          $visitor = Role::create(['name' => 'Visitor']);
+          $visitor->givePermissionTo([
+            'pedidos.index',
+        ]);
           
           $user = User::find(1); 
          $user->assignRole('Admin');

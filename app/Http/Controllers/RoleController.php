@@ -20,19 +20,28 @@ class RoleController extends Controller
         $n = sizeof($modelhasrole);
         
         
-
-        if($n==0){
-            $modelhasrole = new ModelHasRole;
-            $modelhasrole->role_id = $request->role;
-            $modelhasrole->model_type = "App\Models\User";
-            $modelhasrole->model_id = $request->user;
-            $modelhasrole->save();
-        }
-        else{
-            if($n==1){
-                $users = DB::update('update model_has_roles set role_id= ? where model_id = ?', [$r,$user]);
+       if($user==1){
+          echo "No puede cambiar el rol del administrador general.";
+       }
+       else{
+           if($user!=1){
+            if($n==0){
+                $modelhasrole = new ModelHasRole;
+                $modelhasrole->role_id = $request->role;
+                $modelhasrole->model_type = "App\Models\User";
+                $modelhasrole->model_id = $request->user;
+                $modelhasrole->save();
+                return redirect('/usuarios');
             }
-        }
+            else{
+                if($n==1){
+                    $users = DB::update('update model_has_roles set role_id= ? where model_id = ?', [$r,$user]);
+                    return redirect('/usuarios');
+                }
+            }
+           }
+       }
+        
        
         
 

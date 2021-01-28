@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
-    <title>Document</title>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <title>Usuarios</title>
 </head>
 <body>
 <div class="container my-3">
+<a class="btn btn-primary" href="/home" role="button">Back</a>
+<hr>
+<h4>Usuarios</h4>
 <table class="table">
             <thead>
             <tr>
       <th scope="col">ID</th>
       <th scope="col">NOMBRE</th>
       <th scope="col">E-MAIL</th>
+      <th scope="col">ROL</th>
       <th scope="col">-</th>
     </tr>
   </thead>
@@ -24,6 +27,17 @@
       <td>{{ $u->id }}</td>
       <td>{{ $u->name }}</td>
       <td>{{ $u->email }}</td>
+      @switch($u->role_id)
+      @case(1)
+      <td>Administrador</td>
+      @break
+      @case(2)
+      <td>Empleado</td>
+      @break
+      @case(3)
+      <td>Visitante</td>
+      @break
+      @endswitch
       <td>
       <a href="/role/{{$u->id}}">ASIGNAR ROL</a>
       </td>

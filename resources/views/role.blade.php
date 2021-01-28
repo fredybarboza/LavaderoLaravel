@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <title>Document</title>
 </head>
 <body>
-<div class="container">
+<div class="container my-3 py-3">
+<a class="btn btn-primary" href="/home" role="button">Back</a>  <b> | Configuración De Roles</b>
+<hr>
 <form action="/role" method="POST">
 @csrf
 
 <input type="hidden" name="user" value="{{$id}}">
 <label>
-<input type="radio" name="role" value="1">Administrador
+<input type="radio" name="role" value="1"> Administrador 
 </label>
-
+<br>
 <label>
-<input type="radio" name="role" value="2">Empleado
+<input type="radio" name="role" value="2"> Empleado 
+</label>
+<br>
+<label>
+<input type="radio" name="role" value="3"> Inhabilitar 
 </label>
 <br>
 <hr>
 <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
-{{$id}}
 </div>
 </body>
 </html>

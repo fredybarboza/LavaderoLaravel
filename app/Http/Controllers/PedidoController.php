@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Pedido;
+use App\Models\Empleado;
 
 class PedidoController extends Controller
 {
@@ -15,7 +16,8 @@ class PedidoController extends Controller
     }
 
     public function assignView($id){
-        return view('asignar',compact('id'));
+        $empleados = Empleado::get()->all();
+        return view('asignar',compact('id','empleados'));
     }
 
     public function assignEmployee(Request $request){
