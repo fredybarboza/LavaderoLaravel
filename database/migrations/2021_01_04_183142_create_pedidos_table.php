@@ -19,7 +19,7 @@ class CreatePedidosTable extends Migration
             $table->string('id_vehiculo');
             $table->string('id_servicio');
             $table->string('monto');
-            $table->string('estado')->default('0');
+            $table->string('estado')->default('1');
             $table->string('id_empleado_encargado')->nullable();
             $table->timestamps();
         });

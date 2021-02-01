@@ -23,10 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::where('estado','0')->get();
-        $pedidos = Pedido::select('pedidos.id' ,'pedidos.id_servicio', 'pedidos.id_usuario','vehiculos.marca','vehiculos.matricula')
+        
+        $pedidos = Pedido::select('pedidos.id' ,'pedidos.id_servicio','pedidos.monto', 'pedidos.id_usuario','vehiculos.marca','vehiculos.modelo','vehiculos.matricula')
                   ->join('vehiculos', 'pedidos.id_vehiculo', '=', 'vehiculos.id')
-                  ->get();
-        return view('home',compact('pedidos'));
+                  ->where('estado','1')->get();
+        $n = sizeof($pedidos);
+        return view('home',compact('pedidos','n'));
     }
 }

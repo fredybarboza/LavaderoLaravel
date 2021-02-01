@@ -22,6 +22,7 @@ class PermissionsTableSeeder extends Seeder
          Permission::create(['name' => 'pedidos.show']);
          Permission::create(['name' => 'pedidos.destroy']);
          Permission::create(['name' => 'pedidos.asignar']);
+         Permission::create(['name' => 'pedidos.finalizar']);
          Permission::create(['name' => 'empleados.index']);
          Permission::create(['name' => 'empleados.store']);
          Permission::create(['name' => 'empleados.destroy']);
@@ -38,6 +39,7 @@ class PermissionsTableSeeder extends Seeder
              'pedidos.show',
              'pedidos.destroy',
              'pedidos.asignar',
+             'pedidos.finalizar',
              //EMPLEADOS
              'empleados.index',
              'empleados.store',
@@ -58,6 +60,7 @@ class PermissionsTableSeeder extends Seeder
               'pedidos.show',
               'pedidos.edit',
               'pedidos.asignar',
+              'pedidos.finalizar',
           ]);
 
           //Visitor

@@ -45,5 +45,11 @@ Route::middleware(['auth'])->group(function () {
                                                         ->middleware('permission:pedidos.asignar');
     Route::post('/asignar', 'App\Http\Controllers\PedidoController@assignEmployee')->name('pedidos.asignar')
                                                         ->middleware('permission:pedidos.asignar');
+    Route::get('/pedidos', 'App\Http\Controllers\PedidoController@index')->name('pedidos.index')
+                                                        ->middleware('permission:pedidos.index');
+    Route::get('/finalizar-pedido/{pedidoId}', 'App\Http\Controllers\PedidoController@finalizarPedido')->name('pedidos.finalizar')
+                                                        ->middleware('permission:pedidos.finalizar');
+    Route::get('/finalizados', 'App\Http\Controllers\PedidoController@getFinalizados')->name('pedidos.index')
+                                                        ->middleware('permission:pedidos.index');
     
 });

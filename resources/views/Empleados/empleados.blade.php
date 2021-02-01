@@ -7,7 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container my-3">
+<div class="container my-3 py-3">
+<h4><a class="btn btn-primary" href="/home" role="button">Home</a>  <b> | Lista De Empleados</b></h4>
+<hr>
 <table class="table">
             <thead>
             <tr>
@@ -15,6 +17,8 @@
       <th scope="col">NOMBRE</th>
       <th scope="col">APELLIDO</th>
       <th scope="col">CI</th>
+      <th scope="col">DIRECCIÓN</th>
+      <th scope="col">CELULAR</th>
       <th scope="col">-</th>
     </tr>
   </thead>
@@ -22,11 +26,13 @@
   @foreach($empleados as $e)
     <tr>
       <td>{{ $e->id }}</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{$e->nombre}}</td>
+      <td>{{$e->apellido}}</td>
+      <td>{{$e->ci}}</td>
+      <td>{{$e->direccion}}</td>
+      <td>{{$e->celular}}</td>
       <td>
-      <a href="/pedidos">ASIGNAR ROL</a>
+      <a href="/trabajos">Ver Trabajos</a>
       </td>
     </tr>
     @endforeach
