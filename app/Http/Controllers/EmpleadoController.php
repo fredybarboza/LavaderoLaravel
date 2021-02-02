@@ -30,5 +30,6 @@ class EmpleadoController extends Controller
           return response(['error'=>$validator->errors(),'Validation Error']);    
           }
         $empleado = Empleado::create($input);
+        return redirect('/empleados');
     }
 }

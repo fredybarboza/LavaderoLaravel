@@ -11,16 +11,6 @@ use Validator;
 
 class PedidoController extends Controller
 {
-    public function index()
-  {
-    $pedidos = Pedido::where('estado','0')->get();
-    
-    return response([
-     'pedidos'=>PedidoResource::collection($pedidos),
-     'message'=>'Retrieved Succesfully'],
-     200);
-   
-  }
     //STORE
    public function store(Request $request){
     $vehiculo = Vehiculo::find($request->id_vehiculo);
@@ -44,30 +34,18 @@ class PedidoController extends Controller
       return response(['message'=>'Error creating order']);
     }
   }
-  //UPDATE
-  public function update(Request $request, Pedido $pedido)
-  {
-    $input = $request->all();
-    $validator = Validator::make($input, [
-    'id_empleado_encargado' => 'required'
-    ]);
-      if($validator->fails()){
-      return response(['error'=>$validator->errors(),'Validation Error']);  
-      }
-    $pedido->id_empleado_encargado = $input['id_empleado_encargado'];
-    $pedido->save();
-    return response(['pedidos'=> new PedidoResource($pedido), 'message'=>'Updated Succesfully'],200);
-  }
+  
   //SHOW
   public function show($id)
   {
-    $pedido = Pedido::find($id);
-    if (is_null($pedido)) {
-    return response(['Pedido not found']);  
-    }
-
-    return response(['pedidos'=> new PedidoResource($pedido), 'message'=>'Retrieved Succesfully'],200);
+    $pedidos = Pedido::where('id_usuario', $id)->get();
+    
+    return response([
+     'pedidos'=>PedidoResource::collection($pedidos),
+     'message'=>'Retrieved Succesfully'],
+     200);
   }
+
   //DESTROY
   public function destroy(Pedido $pedido)
   {

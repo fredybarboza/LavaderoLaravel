@@ -8,9 +8,8 @@
 </head>
 <body>
 <div class="container my-3">
-<a class="btn btn-primary" href="/home" role="button">Back</a>
+<h4><a class="btn btn-primary" href="/home" role="button">Home</a>  <b> | Usuarios</b></h4>
 <hr>
-<h4>Usuarios</h4>
 <table class="table">
             <thead>
             <tr>
