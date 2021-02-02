@@ -38,8 +38,7 @@ class PedidoController extends Controller
   //SHOW
   public function show($id)
   {
-    $pedidos = Pedido::where('id_usuario', $id)->get();
-    
+    $pedidos = Pedido::where('id_usuario', $id)->where('estado','1')->get();
     return response([
      'pedidos'=>PedidoResource::collection($pedidos),
      'message'=>'Retrieved Succesfully'],
