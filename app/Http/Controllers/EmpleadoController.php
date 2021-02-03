@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Empleado;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -15,6 +16,11 @@ class EmpleadoController extends Controller
 
     public function createView(){
         return view('Empleados.crear');
+    }
+
+    public function employeeWorks($id){
+        $pedidos = Pedido::where('id_empleado_encargado', $id)->where('estado','3')->get();
+        return view('Empleados.trabajos',compact('pedidos'));
     }
 
     public function createEmployee(Request $request){

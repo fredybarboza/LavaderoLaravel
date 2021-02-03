@@ -33,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
                                                         ->middleware('permission:empleados.index');
     Route::get('/nuevo-empleado', 'App\Http\Controllers\EmpleadoController@createView')->name('empleados.store')
                                                         ->middleware('permission:empleados.store');
+    Route::get('/trabajos/{empleadoId}', 'App\Http\Controllers\EmpleadoController@employeeWorks')->name('empleados.trabajos')
+                                                        ->middleware('permission:empleados.trabajos');
     Route::post('/nuevo-empleado', 'App\Http\Controllers\EmpleadoController@createEmployee')->name('empleados.store')
                                                         ->middleware('permission:empleados.store');
      Route::get('/usuarios', 'App\Http\Controllers\UserController@index')->name('users.index')
@@ -46,6 +48,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/asignar', 'App\Http\Controllers\PedidoController@assignEmployee')->name('pedidos.asignar')
                                                         ->middleware('permission:pedidos.asignar');
     Route::get('/pedidos', 'App\Http\Controllers\PedidoController@index')->name('pedidos.index')
+                                                        ->middleware('permission:pedidos.index');
+    Route::get('/factura/{pedidoId}', 'App\Http\Controllers\PedidoController@viewFactura')->name('pedidos.index')
                                                         ->middleware('permission:pedidos.index');
     Route::get('/finalizar-pedido/{pedidoId}', 'App\Http\Controllers\PedidoController@finalizarPedido')->name('pedidos.finalizar')
                                                         ->middleware('permission:pedidos.finalizar');

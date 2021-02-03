@@ -4,24 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <title>Finalizados</title>
+    <title>Trabajos</title>
 </head>
 <body>
     <div class="container">
-    <div class="container my-3 py-3">
-    <h4><a class="btn btn-primary" href="/home" role="button">Home</a>  <b> | Pedidos Finalizados</b></h4>
-<hr>
-    @if($n!=null)
     <table class="table">
             <thead>
             <tr>
       <th scope="col">ID</th>
       <th scope="col">SERVICIO</th>
       <th scope="col">MONTO</th>
-      <th scope="col">MARCA</th>
-      <th scope="col">MODELO</th>
-      <th scope="col">MATRICULA</th>
-      <th scope="col">ACCIÓN</th>
+      <th scope="col">FECHA</th>
     </tr>
   </thead>
   <tbody>
@@ -46,21 +39,11 @@
       @break
       @endswitch
       <td>{{$p->monto}}</td>
-      <td>{{$p->marca}}</td>
-      <td>{{$p->modelo}}</td>
-      <td>{{$p->matricula}}</td>
-      <td>
-      <a class="btn btn-primary" href="/factura/{{$p->id}}" role="button">Ver Factura</a>
-      </td>
+      <td>{{$p->updated_at}}</td>
     </tr>
    @endforeach
      </tbody>
      </table>
-  @else
-  <div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
-</div>
-  @endif
     </div>
 </body>
 </html>

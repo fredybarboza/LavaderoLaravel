@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Pedido;
 use App\Models\Empleado;
+use App\Models\User;
 
 class PedidoController extends Controller
 {
@@ -31,6 +32,7 @@ class PedidoController extends Controller
         $empleado = Empleado::find($request->id_empleado);
         if($empleado!=null){
             $pedido->save();
+            return redirect('/home');
         }
         else{
             echo "ID NO VÁLIDO";
@@ -52,5 +54,24 @@ class PedidoController extends Controller
                   ->where('estado','3')->get();
         $n = sizeof($pedidos);
         return view('Pedidos.finalizados',compact('pedidos','n'));
+    }
+
+    public function viewFactura($id){
+        
+        $pedidos = Pedido::find($id);
+        
+        if($pedidos==null){
+            echo "Factura no disponible";
+        }
+        else{
+            if($pedidos->estado=='3'){
+                $user = User::find($pedidos->id_usuario);
+                $pedidos->id_usuario = $user->name;
+                return view('Pedidos.factura',compact('pedidos'));
+            }
+            else{
+                echo "Factura no disponible";
+            }
+        }
     }
 }

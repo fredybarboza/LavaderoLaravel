@@ -32,7 +32,7 @@
       <td>{{$e->direccion}}</td>
       <td>{{$e->celular}}</td>
       <td>
-      <a href="/trabajos">Ver Trabajos</a>
+      <a href="/trabajos/{{$e->id}}">Ver Trabajos</a>
       </td>
     </tr>
     @endforeach

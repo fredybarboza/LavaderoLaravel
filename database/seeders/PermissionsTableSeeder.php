@@ -26,6 +26,7 @@ class PermissionsTableSeeder extends Seeder
          Permission::create(['name' => 'empleados.index']);
          Permission::create(['name' => 'empleados.store']);
          Permission::create(['name' => 'empleados.destroy']);
+         Permission::create(['name' => 'empleados.trabajos']);
          Permission::create(['name' => 'users.index']);
          Permission::create(['name' => 'role.create']);
          Permission::create(['name' => 'role.view']);
@@ -44,6 +45,7 @@ class PermissionsTableSeeder extends Seeder
              'empleados.index',
              'empleados.store',
              'empleados.destroy',
+             'empleados.trabajos',
              //USERS
              'users.index',
              //ROLES
