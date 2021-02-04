@@ -11,26 +11,6 @@ use Illuminate\Http\Request;
 
 class PedidosFinalizadosController extends Controller
 {
-    //INDEX
-    /*public function index()
-    {
-      $pedidos = Pedido::where('estado','1')->get();
-      
-      return response([
-       'pedidos'=>PedidoResource::collection($pedidos),
-       'message'=>'Retrieved Succesfully'],
-       200);
-     
-    }
-    
-    //UPDATE
-    public function update(Request $request, $id){
-      $pedido = Pedido::find($id);
-      $pedido->estado = '1';
-      $pedido->save();
-      return response(['message'=>'Updated Succesfully'],200);
-    }*/
-
     //SHOW
     public function show($id)
   {

@@ -38,4 +38,11 @@ class VehiculoController extends Controller
      'message'=>'Retrieved Succesfully'],
      200);
   }
+
+  //DESTROY
+  public function destroy(Vehiculo $vehiculo)
+  {
+    $vehiculo->delete();
+    return response(['vehiculo'=> new VehiculoResource($vehiculo), 'message'=>'Delete Succesfully'],200);
+  }
 }
