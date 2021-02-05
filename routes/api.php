@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\PedidosFinalizadosController;
 use App\Http\Controllers\Api\VehiculoController;
 use App\Http\Controllers\Api\FacturaController;
+use App\Http\Controllers\Api\NotificacionController;
 use App\Http\Controllers\Api\PedidosAprobadosController;
 
 
@@ -32,5 +33,6 @@ Route::middleware('auth:api')->group(function () {
     Route::resource('finalizados', PedidosFinalizadosController::class);
     Route::resource('vehiculos', VehiculoController::class);
     Route::resource('facturas', FacturaController::class);
+    Route::resource('notificaciones', NotificacionController::class);
 });
 

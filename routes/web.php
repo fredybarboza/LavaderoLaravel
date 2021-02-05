@@ -49,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
                                                         ->middleware('permission:pedidos.asignar');
     Route::get('/pedidos', 'App\Http\Controllers\PedidoController@index')->name('pedidos.index')
                                                         ->middleware('permission:pedidos.index');
+    Route::get('/rechazar/{pedidoId}', 'App\Http\Controllers\PedidoController@rechazarPedido')->name('pedidos.index')
+                                                        ->middleware('permission:pedidos.index');
     Route::get('/factura/{pedidoId}', 'App\Http\Controllers\PedidoController@viewFactura')->name('pedidos.index')
                                                         ->middleware('permission:pedidos.index');
     Route::get('/finalizar-pedido/{pedidoId}', 'App\Http\Controllers\PedidoController@finalizarPedido')->name('pedidos.finalizar')

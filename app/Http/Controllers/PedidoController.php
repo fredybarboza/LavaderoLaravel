@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\Empleado;
 use App\Models\User;
+use App\Models\Notificacion;
 
 class PedidoController extends Controller
 {
@@ -23,6 +24,19 @@ class PedidoController extends Controller
     public function assignView($id){
         $empleados = Empleado::get()->all();
         return view('Pedidos.asignar',compact('id','empleados'));
+    }
+
+    public function rechazarPedido($id){
+        $pedido = Pedido::find($id);
+        $n = $pedido->id_usuario;
+        $s = $pedido->id_servicio;
+        $pedido->delete();
+        $notificacion = new Notificacion;
+        $notificacion->id_usuario = $n;
+        $notificacion->mensaje = "Lo sentimos. Su pedio ha sido Rechazado. ID: $id";
+        $notificacion->servicio = $s;
+        $notificacion->save();
+        return redirect('/home');
     }
 
     public function assignEmployee(Request $request){

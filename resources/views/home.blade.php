@@ -65,7 +65,10 @@
       <td>{{$p->modelo}}</td>
       <td>{{$p->matricula}}</td>
       <td>
-      <a class="btn btn-primary" href="/asignar/{{$p->id}}" role="button">Asignar Empleado</a>
+      <div class="btn-group" role="group" aria-label="Basic example">
+  <a role="button" href="/asignar/{{$p->id}}" class="btn btn-primary">Asignar</a>
+  <a role="button" href="rechazar/{{$p->id}}" class="btn btn-danger">Rechazar</a>
+</div>
       </td>
     </tr>
    @endforeach
