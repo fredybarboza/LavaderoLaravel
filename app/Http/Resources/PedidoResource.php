@@ -15,6 +15,10 @@ class PedidoResource extends JsonResource
     public function toArray($request)
     {
         return[
+            'nombre'=> $this->nombre,
+            'apellido'=> $this->apellido,
+            'ci'=> $this->ci,
+            'direccion'=> $this->direccion,
             'id'=> $this->id,
             'id_usuario'=> $this->id_usuario,
             'id_vehiculo'=> $this->id_vehiculo,
