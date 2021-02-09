@@ -57,8 +57,16 @@ class PedidoController extends Controller
     public function finalizarPedido($id)
     {
         $pedido = Pedido::find($id);
+        $n = $pedido->id_usuario;
+        $s = $pedido->id_servicio;
         $pedido->estado= "3";
         $pedido->save();
+        //NOTIFICACION
+        $notificacion = new Notificacion;
+        $notificacion->id_usuario = $n;
+        $notificacion->mensaje = "Pedido finalizado! ID: $id";
+        $notificacion->servicio = $s;
+        $notificacion->save();
         return redirect('/pedidos');
     }
 
@@ -79,9 +87,10 @@ class PedidoController extends Controller
         }
         else{
             if($pedidos->estado=='3'){
-                $user = User::find($pedidos->id_usuario);
-                $pedidos->id_usuario = $user->name;
-                return view('Pedidos.factura',compact('pedidos'));
+                $pedidos = Pedido::select('pedidos.id' ,'pedidos.id_servicio', 'pedidos.monto', 'user_data.nombre', 'user_data.apellido', 'user_data.ci', 'user_data.direccion')
+                  ->join('user_data', 'pedidos.id_usuario', '=', 'user_data.id_usuario')
+                  ->where('pedidos.id',$id)->get();
+                return view('Pedidos.factura',compact('pedidos',));
             }
             else{
                 echo "Factura no disponible";

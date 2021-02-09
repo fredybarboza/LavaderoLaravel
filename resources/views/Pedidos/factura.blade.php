@@ -12,10 +12,15 @@
     <i>Coronel Bogado-Itapúa Py.</i><br>
     |||||||||||||||||||||||||||||||||||||||||||||
     <hr>
-    FACTURA N° {{$pedidos->id}}
-    <div style="border: 1px solid #ddd; border-radius: 5px">NOMBRE: {{$pedidos->id_usuario}}</div>
+    @foreach($pedidos as $p)
+    FACTURA N° {{$p->id}}
+    <div style="border: 1px solid #ddd; border-radius: 5px">NOMBRE/S: {{$p->nombre}}</div>
     <br>
-    <div style="border: 1px solid #ddd; border-radius: 5px">R.U.C/C.I: </div>
+    <div style="border: 1px solid #ddd; border-radius: 5px">APELLIDO/S: {{$p->apellido}}</div>
+    <br>
+    <div style="border: 1px solid #ddd; border-radius: 5px">R.U.C/C.I: {{$p->ci}} </div>
+    <hr>
+    <div style="border: 1px solid #ddd; border-radius: 5px">DIRECCION: {{$p->direccion}} </div>
     <hr>
     <table class="table">
   <thead>
@@ -27,17 +32,18 @@
   </thead>
   <tbody>
     <tr>
-      <td>{{$pedidos->id}}</td>
-      <td>{{$pedidos->id_servicio}}</td>
-      <td>{{$pedidos->monto}}</td>
+      <td>{{$p->id}}</td>
+      <td>{{$p->id_servicio}}</td>
+      <td>{{$p->monto}}</td>
     </tr>
     <tr>
       <td></td>
       <td>TOTAL</td>
-      <td>{{$pedidos->monto}}</td>
+      <td>{{$p->monto}}</td>
     </tr>
   </tbody>
 </table>
+@endforeach
     </div>
 </body>
 </html>

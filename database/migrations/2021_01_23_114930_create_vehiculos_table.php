@@ -19,7 +19,7 @@ class CreateVehiculosTable extends Migration
             $table->string('id_categoria');
             $table->string('marca');
             $table->string('modelo');
-            $table->string('matricula');
+            $table->string('matricula')->unique();
             $table->string('color');
             $table->timestamps();
         });

@@ -58,7 +58,7 @@
      </table>
   @else
   <div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
+  Ningún Pedido Finalizado
 </div>
   @endif
     </div>

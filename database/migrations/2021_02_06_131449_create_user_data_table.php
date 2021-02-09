@@ -18,7 +18,7 @@ class CreateUserDataTable extends Migration
             $table->string('id_usuario');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('ci');
+            $table->string('ci')->unique();
             $table->string('direccion');
             $table->string('celular');
             $table->timestamps();
